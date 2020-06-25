@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class MoveBall : MonoBehaviour
 {
@@ -10,13 +11,19 @@ public class MoveBall : MonoBehaviour
     public float speed = 1.0f;
     public float jumpSpeed = 8.0f; //Add jump speed
 
-    private bool isTuchingGround = true;
+    private bool isTuchingGround = true; // Check if we are touching the ground
+
+    private int counter; // count the coins that we have collected
+
+    public Text coinText;
 
     // Start is called before the first frame update
     void Start()
     {
         //Get the rigi d body component
         rb = GetComponent<Rigidbody>();
+        counter = 0;
+        coinText.text = "COINS: " + counter;
     }
 
     // Update is called once per frame
@@ -60,7 +67,10 @@ public class MoveBall : MonoBehaviour
         if (other.gameObject.CompareTag("Coins"))
         {
             //Here we disable the coin in case we colide with it
-            other.gameObject.SetActive(false); 
+            other.gameObject.SetActive(false);
+            counter++;
+            coinText.text = "COINS:" + counter;
+
         }
     }
 }
