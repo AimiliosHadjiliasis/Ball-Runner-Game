@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class MoveBall : MonoBehaviour
 {
@@ -22,7 +23,7 @@ public class MoveBall : MonoBehaviour
     {
         //Get the rigi d body component
         rb = GetComponent<Rigidbody>();
-        counter = 0;
+        counter = 9;
         coinText.text = "COINS: " + counter;
     }
 
@@ -68,9 +69,13 @@ public class MoveBall : MonoBehaviour
         {
             //Here we disable the coin in case we colide with it
             other.gameObject.SetActive(false);
-            counter++;
+            counter--;
             coinText.text = "COINS:" + counter;
 
+            if (counter == 0)
+            {
+                SceneManager.LoadScene("EndScene");
+            }
         }
     }
 }

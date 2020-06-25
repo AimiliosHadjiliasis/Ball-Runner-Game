@@ -1948,6 +1948,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 6
   jumpSpeed: 25
+  coinText: {fileID: 1913561809}
 --- !u!1001 &1788487424
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2111,7 +2112,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'COINS:'
+  m_Text: 'COINS: '
 --- !u!222 &1913561810
 CanvasRenderer:
   m_ObjectHideFlags: 0
