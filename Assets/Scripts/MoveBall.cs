@@ -16,7 +16,10 @@ public class MoveBall : MonoBehaviour
 
     private int counter; // count the coins that we have collected
 
-    public Text coinText;
+    public Text coinText; // print the coints
+
+    public AudioSource aSource; //Define the audio source
+    public AudioClip aClip; //define the sound clip
 
     // Start is called before the first frame update
     void Start()
@@ -71,6 +74,7 @@ public class MoveBall : MonoBehaviour
             other.gameObject.SetActive(false);
             counter--;
             coinText.text = "COINS:" + counter;
+            aSource.PlayOneShot(aClip);
 
             if (counter == 0)
             {
