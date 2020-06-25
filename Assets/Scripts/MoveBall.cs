@@ -16,8 +16,7 @@ public class MoveBall : MonoBehaviour
     void Start()
     {
         //Get the rigi d body component
-        rb = GetComponent<Rigidbody>(); 
-        
+        rb = GetComponent<Rigidbody>();
     }
 
     // Update is called once per frame
@@ -48,5 +47,20 @@ public class MoveBall : MonoBehaviour
     private void OnCollisionStay()
     {
         isTuchingGround = true;
+    }
+
+    //This function checks if our sphere has collide with any object
+    private void OnTriggerEnter(Collider other)
+    {
+        // In our case we need to check if the sphere has collide with the coins
+        // so we check if there is a collision between the coins and the sphere
+        // by checking if the collider called other which in our case is the coins
+        // by checking for their tag name
+        // But we need at first tick the trigger in the Unity for the coin prefab
+        if (other.gameObject.CompareTag("Coins"))
+        {
+            //Here we disable the coin in case we colide with it
+            other.gameObject.SetActive(false); 
+        }
     }
 }
